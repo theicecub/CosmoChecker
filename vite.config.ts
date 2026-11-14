@@ -11,18 +11,18 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
-      includeAssets: ['orbitvitals-icon.svg'],
+      includeAssets: ['cosmochecker-icon.svg'],
       manifest: {
         id: '/',
-        name: 'OrbitVitals — Mission Health',
-        short_name: 'OrbitVitals',
+        name: 'CosmoChecker — Mission Health',
+        short_name: 'CosmoChecker',
         description: 'An offline-first educational mission health tracker.',
         start_url: '/',
         scope: '/',
         display: 'standalone',
         background_color: '#08111d',
         theme_color: '#08111d',
-        icons: [{ src: '/orbitvitals-icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }],
+        icons: [{ src: '/cosmochecker-icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }],
       },
       workbox: {
         cleanupOutdatedCaches: true,

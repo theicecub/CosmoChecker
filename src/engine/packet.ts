@@ -50,7 +50,7 @@ export function buildFlightSurgeonPacket(input: {
 
 export function formatPacketText(packet: FlightSurgeonPacket): string {
   const lines = [
-    `OrbitVitals Flight Surgeon Packet · Day ${packet.generatedForDay}`,
+    `CosmoChecker Flight Surgeon Packet · Day ${packet.generatedForDay}`,
     `Crew member: ${packet.crewId}`,
     `Recent records: ${packet.lastSevenDays.length} day(s)`,
     '',

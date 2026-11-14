@@ -1,6 +1,6 @@
 import { get, set } from 'idb-keyval'
 import type { FlightSurgeonPacket } from '../engine/packet'
-import { privateDeviceStore } from './checkins'
+import { ensureDeviceStoreMigrated, privateDeviceStore } from './checkins'
 
 export const PACKET_QUEUE_KEY = 'flight-surgeon-packets-v1'
 
@@ -13,6 +13,7 @@ export interface QueuedPacket {
 }
 
 export async function readPacketQueue(): Promise<QueuedPacket[]> {
+  await ensureDeviceStoreMigrated()
   return (await get<QueuedPacket[]>(PACKET_QUEUE_KEY, privateDeviceStore)) ?? []
 }
 

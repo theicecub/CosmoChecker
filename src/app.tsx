@@ -84,9 +84,9 @@ export function App() {
   return (
     <div className="app-frame" data-contrast={highContrast ? 'high' : undefined}>
       <header className="topbar">
-        <a className="brand-lockup" href="#main" aria-label="OrbitVitals home">
+        <a className="brand-lockup" href="#main" aria-label="CosmoChecker home">
           <span className="brand-mark"><Orbit aria-hidden="true" /></span>
-          <span><strong>OrbitVitals</strong><small>MISSION HEALTH</small></span>
+          <span><strong>CosmoChecker</strong><small>MISSION HEALTH</small></span>
         </a>
         <div className="topbar-right">
           <span className="prototype-tag"><span aria-hidden="true" /> PROTOTYPE</span>

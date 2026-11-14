@@ -1,4 +1,4 @@
-import { createStore, del, get, set } from 'idb-keyval'
+import { createStore, del, get, keys, set } from 'idb-keyval'
 import type { CrewId, DailyRecord } from '../config/types'
 
 export interface DailyCheckIn extends DailyRecord {
@@ -8,9 +8,34 @@ export interface DailyCheckIn extends DailyRecord {
 }
 
 export const CHECK_INS_KEY = 'daily-checkins-v1'
-export const privateDeviceStore = createStore('orbitvitals-device-data', 'private-checkins')
+export const privateDeviceStore = createStore('cosmochecker-device-data', 'private-checkins')
+const legacyDeviceStore = createStore('orbitvitals-device-data', 'private-checkins')
+const DEVICE_STORE_MIGRATION_KEY = '__legacy-device-store-migrated-v1__'
+
+let deviceStoreMigration: Promise<void> | undefined
+
+export function ensureDeviceStoreMigrated(): Promise<void> {
+  if (!deviceStoreMigration) {
+    deviceStoreMigration = migrateLegacyDeviceStore()
+  }
+  return deviceStoreMigration
+}
+
+async function migrateLegacyDeviceStore(): Promise<void> {
+  if (await get<boolean>(DEVICE_STORE_MIGRATION_KEY, privateDeviceStore)) return
+
+  for (const key of await keys(legacyDeviceStore)) {
+    const value = await get(key, legacyDeviceStore)
+    if (value !== undefined && await get(key, privateDeviceStore) === undefined) {
+      await set(key, value, privateDeviceStore)
+    }
+  }
+
+  await set(DEVICE_STORE_MIGRATION_KEY, true, privateDeviceStore)
+}
 
 export async function readCheckIns(): Promise<DailyCheckIn[]> {
+  await ensureDeviceStoreMigrated()
   return (await get<DailyCheckIn[]>(CHECK_INS_KEY, privateDeviceStore)) ?? []
 }
 
@@ -38,6 +63,7 @@ export async function deleteCheckIn(id: string): Promise<DailyCheckIn[]> {
 }
 
 export async function clearCheckIns(): Promise<void> {
+  await ensureDeviceStoreMigrated()
   await del(CHECK_INS_KEY, privateDeviceStore)
 }
 

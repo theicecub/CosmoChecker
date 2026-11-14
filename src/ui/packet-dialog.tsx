@@ -98,9 +98,9 @@ export function PacketDialog({
             {!isWithinLimit && <p className="form-error" role="alert">This export exceeds the 5 KB limit. Shorten actions taken before downloading or queuing.</p>}
             <div className="packet-action-buttons">
               <button type="button" className="secondary-button" onClick={() => void copyContent(json, 'JSON')} disabled={!isWithinLimit}><Clipboard aria-hidden="true" />Copy JSON</button>
-              <button type="button" className="secondary-button" onClick={() => downloadFile(`orbitvitals-packet-day-${exportPacket.generatedForDay}.json`, json, 'application/json')} disabled={!isWithinLimit}><Download aria-hidden="true" />Download JSON</button>
+              <button type="button" className="secondary-button" onClick={() => downloadFile(`cosmochecker-packet-day-${exportPacket.generatedForDay}.json`, json, 'application/json')} disabled={!isWithinLimit}><Download aria-hidden="true" />Download JSON</button>
               <button type="button" className="secondary-button" onClick={() => void copyContent(plainText, 'Text')}><Clipboard aria-hidden="true" />Copy text</button>
-              <button type="button" className="secondary-button" onClick={() => downloadFile(`orbitvitals-packet-day-${exportPacket.generatedForDay}.txt`, plainText, 'text/plain;charset=utf-8')}><Download aria-hidden="true" />Download text</button>
+              <button type="button" className="secondary-button" onClick={() => downloadFile(`cosmochecker-packet-day-${exportPacket.generatedForDay}.txt`, plainText, 'text/plain;charset=utf-8')}><Download aria-hidden="true" />Download text</button>
             </div>
             <button type="button" className="primary-button packet-queue-button" onClick={queueCurrentPacket} disabled={!isWithinLimit || saving}><Send aria-hidden="true" />{saving ? 'Saving locally…' : 'Queue packet on this device'}</button>
             <details className="packet-preview"><summary><FileText aria-hidden="true" /> Preview plain-text packet</summary><pre>{plainText}</pre></details>
