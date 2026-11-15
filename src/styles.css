@@ -56,7 +56,7 @@ h1, h2, h3, p { margin-top: 0; }
 h2, h3, .brand-lockup strong { font-family: 'Overpass', sans-serif; font-weight: 700; }
 .welcome-row h1 { max-width: 770px; font-family: 'Fira Sans', 'Overpass', sans-serif; font-weight: 800; margin: 0; font-size: clamp(26px, 3vw, 39px); font-weight: 600; line-height: 1.15; letter-spacing: -.05em; }
 .welcome-copy { margin: 9px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
-.welcome-row::after { content: ''; position: absolute; z-index: -1; top: -38px; right: -5vw; width: min(48vw, 620px); height: 260px; pointer-events: none; opacity: .12; background: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Waves-3wvMdwqlHPKNSf2ILuhAqQC7ldWDm8.png') center / cover no-repeat; filter: invert(1); mix-blend-mode: screen; mask-image: linear-gradient(90deg, transparent, #000 35%); }
+.welcome-row::after { content: ''; position: absolute; z-index: -1; top: -80px; right: -5vw; width: min(60vw, 800px); height: 300px; pointer-events: none; opacity: .15; background: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Waves-3wvMdwqlHPKNSf2ILuhAqQC7ldWDm8.png') no-repeat right top; background-size: contain; filter: invert(1); mix-blend-mode: screen; mask-image: linear-gradient(90deg, transparent, #000 20%); }
 .health-status-card { flex: 0 0 auto; display: flex; align-items: center; gap: 12px; min-width: 212px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(145deg, #142532, #0f1a26); }
 .health-status-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; color: var(--teal); background: #2E96F51c; }
 .health-status-icon svg { width: 18px; height: 18px; }

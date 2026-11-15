@@ -88,13 +88,6 @@ export function App() {
           <span className="brand-mark"><Orbit aria-hidden="true" /></span>
           <span><strong>CosmoChecker</strong><small>MISSION HEALTH</small></span>
         </a>
-        <div className="topbar-right">
-          <span className="prototype-tag"><span aria-hidden="true" /> PROTOTYPE</span>
-          <span className="live-signal"><Signal aria-hidden="true" /> {mode === 'demo' ? 'SIM DATA' : crewCheckIns.length ? 'LOCAL CHECK-INS' : 'NO CHECK-INS'}</span>
-          <OfflineStatus />
-          <button type="button" className="contrast-toggle" aria-pressed={highContrast} aria-label={highContrast ? 'Disable high contrast' : 'Enable high contrast'} onClick={() => setHighContrast((value) => !value)}><Eye aria-hidden="true" /><span>Contrast</span></button>
-          <a className="topbar-support" href="#support-card" aria-label="I want to talk to someone" title="I want to talk to someone"><Heart aria-hidden="true" /><span>Support</span></a>
-        </div>
       </header>
 
       <main id="main" className="dashboard-main">
@@ -157,8 +150,7 @@ export function App() {
         <AlertFeed alerts={currentAlerts} hasData={dataAvailable} />
 
         <footer className="disclaimer-footer">
-          <strong>Educational prototype — not a medical device.</strong>
-          <span>Thresholds are starter values and require clinical review. This tool does not diagnose, treat, or replace mission procedures or advice from a flight surgeon.</span>
+          <span>Not a medical device. Thresholds are starter values. This tool does not diagnose, treat, or replace professional advice.</span>
         </footer>
         <AboutPanel />
       </main>
