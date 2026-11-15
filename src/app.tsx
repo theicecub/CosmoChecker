@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { AlertTriangle, Eye, FileText, Heart, Orbit, ShieldCheck, Signal, Sparkles } from 'lucide-react'
+import { AlertTriangle, FileText, Orbit, ShieldCheck, Signal, Sparkles } from 'lucide-react'
 import { generateMission } from './sim/generator'
 import { evaluateCrew } from './engine'
 import type { CrewAssessment } from './engine'
@@ -19,7 +19,6 @@ import { PacketDialog } from './ui/packet-dialog'
 import { EscalationCard } from './ui/escalation-card'
 import { AlertFeed } from './ui/alert-feed'
 import { AboutPanel } from './ui/about-panel'
-import { OfflineStatus } from './ui/offline-status'
 import { RadiationMonitor } from './ui/radiation-monitor'
 import { FEATURE_FLAGS } from './config/feature-flags'
 
@@ -45,7 +44,6 @@ export function App() {
   const [selectedRegion, setSelectedRegion] = useState<MapRegion>('heart_vessels')
   const [checkInOpen, setCheckInOpen] = useState(false)
   const [packetOpen, setPacketOpen] = useState(false)
-  const [highContrast, setHighContrast] = useState(false)
   const crewCheckIns = useMemo(() => checkIns.filter((record) => record.crewId === crewId), [checkIns, crewId])
   const latestLiveDay = crewCheckIns.reduce((latest, record) => Math.max(latest, record.day), 1)
   const records = useMemo(() => mode === 'demo' ? generateMission(42, scenario) : checkIns, [checkIns, mode, scenario])
@@ -82,7 +80,7 @@ export function App() {
   const currentCrewLabel = CREW_MEMBERS.find((member) => member.id === crewId)?.label ?? 'Crew member'
 
   return (
-    <div className="app-frame" data-contrast={highContrast ? 'high' : undefined}>
+    <div className="app-frame">
       <header className="topbar">
         <a className="brand-lockup" href="#main" aria-label="CosmoChecker home">
           <span className="brand-mark"><Orbit aria-hidden="true" /></span>
