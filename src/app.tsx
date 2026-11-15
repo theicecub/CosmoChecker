@@ -95,11 +95,6 @@ export function App() {
             <h1 id="page-title">A clear view of your health, wherever the mission takes you.</h1>
             <p className="welcome-copy">A personal health snapshot built around your baseline, your mission, and the signals worth noticing.</p>
           </div>
-          <div className="health-status-card">
-            <span className="health-status-icon"><ShieldCheck aria-hidden="true" /></span>
-            <div><span>Mission status</span><strong>{assessment?.escalation.title ?? 'Live data unavailable'}</strong></div>
-            <span className={`status-dot status-${assessment?.escalation.level === 'L0' ? 'green' : assessment?.escalation.level === 'L1' ? 'amber' : assessment?.escalation.level === 'L2' ? 'amber' : assessment?.escalation.level ? 'red' : 'empty'}`} aria-hidden="true" />
-          </div>
         </section>
 
         <div className="dashboard-summary" aria-label="Mission data summary">
