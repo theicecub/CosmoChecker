@@ -20,8 +20,8 @@ export default defineConfig({
         start_url: '/',
         scope: '/',
         display: 'standalone',
-        background_color: '#08111d',
-        theme_color: '#08111d',
+        background_color: '#07173F',
+        theme_color: '#07173F',
         icons: [{ src: '/cosmochecker-icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }],
       },
       workbox: {
