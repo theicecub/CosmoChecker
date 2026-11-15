@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { AlertTriangle, FileText, Orbit, ShieldCheck, Signal, Sparkles } from 'lucide-react'
+import { AlertTriangle, FileText, Orbit, Signal, Sparkles } from 'lucide-react'
 import { generateMission } from './sim/generator'
 import { evaluateCrew } from './engine'
 import type { CrewAssessment } from './engine'
